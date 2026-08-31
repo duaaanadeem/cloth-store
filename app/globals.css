@@ -1,26 +1,108 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Anton&family=Syne:wght@800&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-color: #dedede;
+  --panel-bg: #c8c8c8;
+  --card-bg: #ffffff;
+  --white: #ffffff;
+
+  --text-dark: #121212;
+  --text-muted: #666666;
+
+  --border-color: #b8b8b8;
+  --border-subtle: #e0e0e0;
+
+  --accent-blue: #1c44c2;
+
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-hero: 'Anton', 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Syne', 'Plus Jakarta Sans', sans-serif;
+
+  --transition: 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 2.2rem 3.8rem;
+  line-height: 1.4;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Texture strictly beneath content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.75'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 1.25rem;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select {
+  font-family: inherit;
+}
+
+/* Diamond Logo: Left Light / Right Black */
+.diamond-logo {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  background: linear-gradient(225deg, #121212 50%, #c4c4c4 50%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Exact Hero Heading fitted to 338x80px */
+.hero-heading-exact {
+  font-family: var(--font-hero);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.bold-header {
+  font-family: var(--font-hero);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dark);
 }
