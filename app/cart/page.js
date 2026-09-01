@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useStore } from '../../context/StoreContext';
 import { PRODUCTS } from '../../data/products';
 import ProductCard from '../../components/ProductCard';
 
-export default function CartPage() {
+function CartContent() {
   const searchParams = useSearchParams();
   const initialTab = searchParams.get('tab') === 'wishlist' ? 'wishlist' : 'bag';
   const [activeTab, setActiveTab] = useState(initialTab);
@@ -181,5 +181,13 @@ export default function CartPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function CartPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center', fontSize: '13px' }}>Loading cart...</div>}>
+      <CartContent />
+    </Suspense>
   );
 }

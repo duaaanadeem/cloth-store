@@ -9,7 +9,7 @@ export default function ProductCard({ product, height = 340 }) {
   const isWished = wishlist.includes(product.id);
 
   return (
-    <article style={{ display: 'flex', flexDirection: 'column', width: '100%', position: 'relative' }}>
+    <article className="card-hover" style={{ display: 'flex', flexDirection: 'column', width: '100%', position: 'relative' }}>
       <div
         style={{
           position: 'relative',
@@ -21,8 +21,9 @@ export default function ProductCard({ product, height = 340 }) {
           boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
         }}
       >
-        <Link href={`/product/${product.id}`} style={{ width: '100%', height: '100%', display: 'block' }}>
+        <Link href={`/product/${product.id}`} style={{ width: '100%', height: '100%', display: 'block', overflow: 'hidden' }}>
           <img
+            className="img-hover"
             src={product.image}
             alt={product.name}
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -32,6 +33,7 @@ export default function ProductCard({ product, height = 340 }) {
         {/* Heart Wishlist Button */}
         <button
           onClick={() => toggleWishlist(product.id)}
+          className="btn-hover"
           aria-label="Save to Favourites"
           style={{
             position: 'absolute',
@@ -57,6 +59,7 @@ export default function ProductCard({ product, height = 340 }) {
         {/* Quick Add Button */}
         <button
           onClick={() => addToCart(product, product.sizes[0], product.colors[0], 1)}
+          className="btn-hover"
           aria-label="Quick Add to Bag"
           style={{
             position: 'absolute',
@@ -85,7 +88,7 @@ export default function ProductCard({ product, height = 340 }) {
             {product.category}
           </span>
           <h3 style={{ fontSize: '13px', fontWeight: '700', marginTop: '0.15rem' }}>
-            <Link href={`/product/${product.id}`}>{product.name}</Link>
+            <Link href={`/product/${product.id}`} className="btn-hover">{product.name}</Link>
           </h3>
         </div>
         <span style={{ fontSize: '14px', fontWeight: '800' }}>${product.price}</span>

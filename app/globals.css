@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Anton&family=Syne:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Anton&display=swap');
 
 :root {
   --bg-color: #dedede;
@@ -16,7 +16,6 @@
 
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-hero: 'Anton', 'Plus Jakarta Sans', sans-serif;
-  --font-heading: 'Syne', 'Plus Jakarta Sans', sans-serif;
 
   --transition: 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -59,6 +58,37 @@ main, header, footer {
   z-index: 1;
 }
 
+/* Hover effects on images and product cards */
+.img-hover {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+.img-hover:hover {
+  transform: scale(1.03);
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.btn-hover {
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-hover:hover {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+}
+
+.btn-hover:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 900px) {
   body {
     padding: 1.25rem;
@@ -74,7 +104,7 @@ button, input, select {
   font-family: inherit;
 }
 
-/* Diamond Logo: Left Light / Right Black */
+/* Diamond Logo Split */
 .diamond-logo {
   width: 32px;
   height: 32px;
@@ -105,4 +135,18 @@ button, input, select {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--text-dark);
+}
+
+/* Global Smooth Hover Effect for Every Image Container */
+img {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.04);
+}
+
+/* Ensure image containers do not overflow when image zooms */
+figure, .card-image-box, article > div:first-child {
+  overflow: hidden;
 }

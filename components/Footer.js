@@ -19,10 +19,11 @@ export default function Footer() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '220px 1fr 220px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           alignItems: 'center',
           minHeight: '260px',
-          position: 'relative'
+          position: 'relative',
+          gap: '2rem'
         }}
       >
         {/* Left Column Links */}
@@ -30,9 +31,9 @@ export default function Footer() {
           <div>
             <h5 style={{ fontSize: '10px', fontWeight: '800', letterSpacing: '1px', color: '#777777', marginBottom: '0.6rem' }}>INFO</h5>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '12px', fontWeight: '700' }}>
-              <li><Link href="/products">PRICING /</Link></li>
-              <li><a href="#about">ABOUT /</a></li>
-              <li><Link href="/products">CONTACTS</Link></li>
+              <li><Link href="/products" className="btn-hover">PRICING /</Link></li>
+              <li><Link href="/about" className="btn-hover">ABOUT /</Link></li>
+              <li><Link href="/contact" className="btn-hover">CONTACTS</Link></li>
             </ul>
           </div>
           <div>
@@ -52,7 +53,6 @@ export default function Footer() {
           </span>
 
           <div style={{ position: 'relative', display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
-            {/* Watermark Background QR */}
             <span
               style={{
                 position: 'absolute',
@@ -72,11 +72,11 @@ export default function Footer() {
             <div className="diamond-logo" style={{ width: '28px', height: '28px', marginBottom: '1.25rem', zIndex: 1 }} />
             <h2
               style={{
-                fontFamily: 'var(--font-heading)',
+                fontFamily: 'var(--font-hero)',
                 fontSize: '52px',
-                fontWeight: '900',
+                fontWeight: '400',
                 lineHeight: '0.82',
-                letterSpacing: '-1.5px',
+                letterSpacing: '0.5px',
                 color: 'var(--text-dark)',
                 zIndex: 1
               }}
